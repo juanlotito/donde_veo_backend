@@ -1,0 +1,1 @@
+from servicies.movie_service import movie_service

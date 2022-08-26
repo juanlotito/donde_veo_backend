@@ -1,0 +1,1 @@
+from controllers.movie_controller import router
