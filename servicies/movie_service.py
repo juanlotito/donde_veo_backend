@@ -50,12 +50,13 @@ class movie_service:
 
     def get_watch_providers_by_country(self, country, watch_providers):
         raw_watch_providers = watch_providers["results"]
-
-        if raw_watch_providers[country] is not None:
+        
+        try:
             entity = self.from_entity_watch_providers(raw_watch_providers[country])
             return entity
-        
-        return None
+
+        except KeyError:
+            return None
 
 
     def search_movie(self, query):

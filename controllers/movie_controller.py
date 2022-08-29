@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from servicies import movie_service
+import requests
 
 router = APIRouter()
 
@@ -19,4 +20,9 @@ async def movie_search(query: str):
 @router.get("/watch_providers")
 async def movie_watch_providers(id, country_code):
     watch_providers = ms.get_watch_providers(id, country_code)
-    return watch_providers
+
+    if watch_providers == None:
+        return None #Ver de como tirar un 404 u otra clase de error
+        
+    elif watch_providers is not None:
+        return watch_providers
