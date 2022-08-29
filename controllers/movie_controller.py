@@ -16,6 +16,7 @@ async def movie_search(query: str):
     movie_found = ms.search_movie(query)
     return movie_found
 
-@router.get("/")
-async def movie_id():
-    return [{"username": "Rick"}, {"username": "Morty"}]
+@router.get("/watch_providers")
+async def movie_watch_providers(id, country_code):
+    watch_providers = ms.get_watch_providers(id, country_code)
+    return watch_providers
